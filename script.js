@@ -1,4 +1,6 @@
 const body = document.body;
+document.documentElement.classList.add("js-ready");
+
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 const backToTop = document.querySelector("[data-back-to-top]");
@@ -47,7 +49,24 @@ if ("IntersectionObserver" in window) {
     { threshold: 0.14 }
   );
 
-  revealItems.forEach((item) => revealObserver.observe(item));
+  const revealVisibleItems = () => {
+    revealItems.forEach((item) => {
+      if (item.classList.contains("is-visible")) {
+        return;
+      }
+
+      const rect = item.getBoundingClientRect();
+      const isInView = rect.top < window.innerHeight * 0.95 && rect.bottom > 0;
+
+      if (isInView) {
+        item.classList.add("is-visible");
+      } else {
+        revealObserver.observe(item);
+      }
+    });
+  };
+
+  requestAnimationFrame(revealVisibleItems);
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
