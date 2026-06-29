@@ -9,6 +9,7 @@ const allowedFiles = new Map([
   ["/styles.css", "styles.css"],
   ["/script.js", "script.js"],
   ["/assets/maison-sante-verjoulot.jpg", "assets/maison-sante-verjoulot.jpg"],
+  ["/assets/illustration-infirmiers.jpg", "assets/illustration-infirmiers.jpg"],
 ]);
 
 const contentTypes = {
@@ -58,11 +59,12 @@ async function fetchText(url) {
   const baseUrl = `http://127.0.0.1:${port}`;
 
   try {
-    const [index, css, js, image] = await Promise.all([
+    const [index, css, js, image, illustration] = await Promise.all([
       fetchText(`${baseUrl}/index.html`),
       fetchText(`${baseUrl}/styles.css`),
       fetchText(`${baseUrl}/script.js`),
       fetchText(`${baseUrl}/assets/maison-sante-verjoulot.jpg`),
+      fetchText(`${baseUrl}/assets/illustration-infirmiers.jpg`),
     ]);
 
     const checks = {
@@ -70,9 +72,11 @@ async function fetchText(url) {
       cssStatus: css.status === 200,
       jsStatus: js.status === 200,
       imageStatus: image.status === 200,
+      illustrationStatus: illustration.status === 200,
       hasCabinetTitle: index.text.includes("Cabinet infirmier"),
       hasEmergencyNotice: index.text.includes("15 ou le 112"),
       hasBuildingPhoto: index.text.includes("assets/maison-sante-verjoulot.jpg"),
+      hasHeroIllustration: index.text.includes("assets/illustration-infirmiers.jpg"),
       hasResponsiveCss: css.text.includes("@media (max-width: 680px)"),
       hasMenuScript: js.text.includes("data-menu-toggle"),
     };

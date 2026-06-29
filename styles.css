@@ -303,12 +303,13 @@ select {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(330px, 390px);
-  gap: 40px;
+  grid-template-columns: minmax(0, 1fr) minmax(230px, 300px) minmax(300px, 360px);
+  gap: 28px;
   align-items: center;
 }
 
 .hero-content,
+.hero-visual,
 .hero-panel,
 .section-heading,
 .contact-panel,
@@ -317,6 +318,57 @@ select {
 .call-box,
 .map-frame {
   min-width: 0;
+}
+
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-illustration-card {
+  position: relative;
+  width: min(100%, 310px);
+  padding: 16px;
+  border: 1px solid rgba(222, 208, 189, 0.82);
+  border-radius: 28px 28px 54px 28px;
+  background:
+    linear-gradient(145deg, rgba(255, 250, 242, 0.95), rgba(243, 234, 220, 0.9));
+  box-shadow: 0 16px 34px rgba(78, 61, 43, 0.1);
+}
+
+.hero-illustration-card::before {
+  content: "";
+  position: absolute;
+  inset: 22px 18px auto auto;
+  width: 92px;
+  height: 92px;
+  border-radius: 48% 52% 56% 44%;
+  background: rgba(184, 121, 77, 0.1);
+  pointer-events: none;
+}
+
+.hero-illustration-card::after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(220, 228, 213, 0.75);
+  pointer-events: none;
+}
+
+.hero-illustration-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 20px 20px 42px 20px;
+  filter: saturate(0.96) sepia(0.05);
 }
 
 .eyebrow {
@@ -1062,6 +1114,10 @@ address {
     gap: 30px;
   }
 
+  .hero-illustration-card {
+    width: min(100%, 440px);
+  }
+
   .quick-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1103,6 +1159,10 @@ address {
     padding: 42px 0 34px;
   }
 
+  .hero-grid {
+    gap: 22px;
+  }
+
   h1 {
     max-width: 100%;
     font-size: 1.88rem;
@@ -1138,6 +1198,21 @@ address {
 
   .hero-cues span {
     width: 100%;
+  }
+
+  .hero-illustration-card {
+    width: min(100%, 330px);
+    padding: 12px;
+    border-radius: 22px 22px 40px 22px;
+  }
+
+  .hero-illustration-card::before {
+    width: 72px;
+    height: 72px;
+  }
+
+  .hero-illustration-img {
+    border-radius: 16px 16px 32px 16px;
   }
 
   .hero-panel,
