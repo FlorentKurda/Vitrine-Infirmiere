@@ -1447,3 +1447,128 @@ address {
     bottom: 86px;
   }
 }
+/* PATCH HERO - Cabinet infirmier */
+
+.hero {
+  padding: 72px 0 80px;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.95fr) minmax(620px, 1.45fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.hero-content {
+  max-width: 520px;
+}
+
+.hero-content h1,
+.hero-title,
+h1 {
+  font-size: clamp(2.9rem, 4vw, 5rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+}
+
+.hero-content p {
+  max-width: 460px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.hero-visual {
+  display: grid;
+  grid-template-columns: minmax(360px, 520px) minmax(280px, 330px);
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-illustration-wrap {
+  width: 100%;
+  max-width: 520px;
+  justify-self: center;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.hero-illustration-img {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  object-fit: contain;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+.hero-panel {
+  width: 100%;
+  max-width: 330px;
+  justify-self: start;
+  position: relative !important;
+  inset: auto !important;
+  transform: none !important;
+  z-index: 2;
+}
+
+@media (max-width: 1180px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .hero-content {
+    max-width: 760px;
+  }
+
+  .hero-visual {
+    grid-template-columns: minmax(320px, 520px) minmax(280px, 330px);
+    justify-content: start;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    padding: 48px 0 56px;
+  }
+
+  .hero-grid {
+    gap: 36px;
+  }
+
+  .hero-content h1,
+  .hero-title,
+  h1 {
+    font-size: clamp(2.4rem, 13vw, 3.6rem) !important;
+  }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+  }
+
+  .hero-illustration-wrap {
+    max-width: 100%;
+  }
+
+  .hero-illustration-img {
+    max-width: 100%;
+  }
+
+  .hero-panel {
+    max-width: 100%;
+  }
+}
