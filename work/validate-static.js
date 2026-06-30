@@ -77,6 +77,10 @@ async function fetchText(url) {
       hasEmergencyNotice: index.text.includes("15 ou le 112"),
       hasBuildingPhoto: index.text.includes("assets/maison-sante-verjoulot.jpg"),
       hasHeroIllustration: index.text.includes("assets/illustration-infirmiers.jpg"),
+      hasSundayOfficeClarification: index.text.includes("Pas de permanence au cabinet"),
+      hasSundayHomeCareClarification: index.text.includes("y compris le dimanche"),
+      avoidsAmbiguousSundayClosed: !index.text.includes("Dimanche : fermé") && !index.text.includes("Cabinet fermé"),
+      hasHoursSummaryCards: index.text.includes("hours-summary"),
       hasResponsiveCss: css.text.includes("@media (max-width: 680px)"),
       hasMenuScript: js.text.includes("data-menu-toggle"),
     };
